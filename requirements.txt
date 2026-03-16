@@ -1,0 +1,19 @@
+# AI Image Colorizer — Python dependencies
+# Install with: pip install -r requirements.txt
+
+# Core ML / CV
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# Image processing
+Pillow>=10.0.0
+
+# Web UI
+streamlit>=1.35.0
+
+# REST API (optional — only needed if running flask_api.py)
+flask>=3.0.0
+
+# Utilities
+tqdm>=4.66.0        # progress bars in setup_models.py
+requests>=2.31.0    # alternative downloader
