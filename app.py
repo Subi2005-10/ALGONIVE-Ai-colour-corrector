@@ -12,6 +12,25 @@ import io
 import os
 import time
 from pathlib import Path
+# Auto-download models if missing
+import urllib.request
+from pathlib import Path
+
+def download_models():
+    MODEL_DIR = Path("models")
+    MODEL_DIR.mkdir(exist_ok=True)
+    
+    files = {
+        "colorization_deploy_v2.prototxt": "https://raw.githubusercontent.com/richzhang/colorization/caffe/colorization/models/colorization_deploy_v2.prototxt",
+        "pts_in_hull.npy": "https://raw.githubusercontent.com/richzhang/colorization/caffe/colorization/resources/pts_in_hull.npy",
+    }
+    
+    for filename, url in files.items():
+        dest = MODEL_DIR / filename
+        if not dest.exists():
+            urllib.request.urlretrieve(url, dest)
+
+download_models()
 
 from utils.colorizer import ImageColorizer
 from utils.image_utils import (
